@@ -1,0 +1,28 @@
+{
+  "name": "embed-sandbox",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A small Preact embed that keeps working on host pages you don't control.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build && node scripts/serve.mjs",
+    "build": "vite build && node scripts/check-size.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "npm run build && playwright test",
+    "screenshots": "npm run build && node scripts/screenshots.mjs"
+  },
+  "dependencies": {
+    "preact": "11.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.0",
+    "@types/node": "24.19.2",
+    "host-preact": "npm:preact@10.29.8",
+    "jsdom": "29.1.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.7",
+    "vitest": "5.1.0"
+  }
+}

@@ -1,0 +1,175 @@
+/*
+ * Injected into the shadow root, never into the host document.
+ *
+ * Host selectors such as `div` or `.card` can't reach elements inside the
+ * shadow tree, but two things still cross the boundary:
+ *   1. Rules that match the host element itself (`* { all: unset !important }`).
+ *   2. Inherited properties (font-size, color, line-height...) and custom properties.
+ * `:host { all: initial !important }` handles both: for !important declarations
+ * the shadow tree's rule beats the outer document's rule, and resetting every
+ * property on the host stops inherited values from flowing in. Custom properties
+ * aren't covered by `all`, so every variable used below is set on `.card`.
+ */
+:host {
+  all: initial !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Preact's render target. It has no box of its own, so the host page's layout can't size it. */
+.root {
+  display: contents;
+}
+
+.card {
+  --es-text: #111827;
+  --es-muted: #4b5563;
+  --es-border: #e5e7eb;
+  --es-error: #b91c1c;
+
+  position: fixed;
+  bottom: 24px;
+  z-index: 2147483000;
+  width: 340px;
+  max-width: calc(100vw - 32px);
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--es-border);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(17, 24, 39, 0.18);
+  color: var(--es-text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: normal;
+  text-align: left;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.card.bottom-right {
+  right: 24px;
+}
+
+.card.bottom-left {
+  left: 24px;
+}
+
+.title {
+  margin: 0 28px 6px 0;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 22px;
+}
+
+.message {
+  margin: 0 0 14px;
+  color: var(--es-muted);
+}
+
+.message.success {
+  margin: 0;
+  color: var(--es-text);
+}
+
+.form {
+  display: block;
+  margin: 0;
+}
+
+.label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.email,
+.submit,
+.close {
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.email {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--es-text);
+}
+
+.email[aria-invalid='true'] {
+  border-color: var(--es-error);
+}
+
+.submit {
+  flex: 0 0 auto;
+  height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--es-accent);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.email:focus-visible,
+.submit:focus-visible,
+.close:focus-visible {
+  outline: 2px solid var(--es-accent);
+  outline-offset: 2px;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--es-muted);
+  cursor: pointer;
+}
+
+.close:hover {
+  background: #f3f4f6;
+}
+
+.close svg {
+  display: block;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.error {
+  margin: 8px 0 0;
+  color: var(--es-error);
+  font-size: 12px;
+  line-height: 16px;
+}
