@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>embed-sandbox demo pages</title>
+    <style>
+      body { margin: 0 auto; max-width: 640px; padding: 48px 16px; font: 16px/1.6 system-ui, sans-serif; color: #1f2937; }
+      a { color: #1d4ed8; }
+    </style>
+  </head>
+  <body>
+    <h1>embed-sandbox demo pages</h1>
+    <p>Both pages load the same <code>embed.js</code> with the same data attributes.</p>
+    <ul>
+      <li><a href="/normal.html">Normal host page</a>: one deferred script tag, ordinary CSS.</li>
+      <li><a href="/hostile.html">Hostile host page</a>: global CSS resets, polluted globals, another Preact, the script loaded twice and late.</li>
+    </ul>
+  </body>
+</html>

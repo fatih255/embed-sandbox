@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Normal host page (embed-sandbox demo)</title>
+    <style>
+      :root { color-scheme: light; }
+      body { margin: 0; background: #f8fafc; color: #1f2937; font: 17px/1.65 Georgia, 'Times New Roman', serif; }
+      header { padding: 20px 32px; border-bottom: 1px solid #e2e8f0; background: #ffffff; font: 600 15px/1 system-ui, sans-serif; }
+      header span { color: #64748b; font-weight: 400; }
+      main { max-width: 680px; margin: 0 auto; padding: 48px 32px 160px; }
+      h1 { margin: 0 0 16px; font-size: 36px; line-height: 1.2; }
+      p { margin: 0 0 18px; }
+      code { font: 15px ui-monospace, Consolas, monospace; background: #e2e8f0; padding: 1px 5px; border-radius: 4px; }
+    </style>
+  </head>
+  <body>
+    <header>Demo host page <span>· normal</span></header>
+    <main>
+      <h1>A page that plays nice</h1>
+      <p>
+        This page has ordinary CSS: a serif body font, a few element selectors and nothing marked
+        <code>!important</code>. It loads the widget with one deferred script tag.
+      </p>
+      <p>
+        The card in the corner comes from <code>embed.js</code>. Open the hostile page next to this one;
+        the card should look exactly the same there.
+      </p>
+      <p>
+        Press <code>Esc</code> or the close button to remove it. Run <code>EmbedSandbox.init()</code> in the
+        console to bring it back.
+      </p>
+    </main>
+
+    <script
+      src="/embed.js"
+      defer
+      data-title="Get the monthly changelog"
+      data-message="One short email when something ships. This is a demo, so nothing is sent."
+      data-button="Subscribe"
+      data-success="Thanks, you're on the list."
+      data-accent="#2563eb"
+      data-position="bottom-right"
+    ></script>
+  </body>
+</html>
